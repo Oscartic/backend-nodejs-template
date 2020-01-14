@@ -1,0 +1,17 @@
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: Authenticate using JWT
+      scheme: bearer
+      bearerFormat: JWT
+  security:
+    - BearerAuth: []
+  examples:
+    rutExample:
+      value: "18061415-3"
+    emailExample:
+      value: "pdecarcer@abstract.cl"
+tags:
+  - name: Some
+    description: Some resource API
