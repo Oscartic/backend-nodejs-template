@@ -1,0 +1,28 @@
+name: Lint
+on: [pull_request]
+
+jobs:
+
+  Lint:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Config github packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_PACKAGES_ACCESS_TOKEN }}" >> .npmrc
+
+    - name: npm install and lint
+      run: |
+        npm ci
+        npm run lint

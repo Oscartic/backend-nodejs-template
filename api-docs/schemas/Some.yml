@@ -1,0 +1,21 @@
+components:
+  schemas:
+    Some:
+      allOf:
+        - $ref: "#/components/schemas/SomeBody"
+        - type: object
+          SomeId:
+            type: string
+          createdAt:
+            type: string
+            format: date
+          updatedAt:
+            type: string
+            format: date
+    SomeBody:
+      type: object
+      required:
+        - "name"
+      properties:
+        name:
+          type: string

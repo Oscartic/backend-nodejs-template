@@ -1,0 +1,49 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - 'release/**'
+
+jobs:
+
+  Deploy-staging:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Bump version and push tag
+      id: create_tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RELEASE_BRANCHES: release/**
+        WITH_V: true
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Config github packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_PACKAGES_ACCESS_TOKEN }}" >> .npmrc
+
+    - name: Generate deployment package
+      run: zip deploy.zip * -r -rv .npmrc -x *.git* node_modules/**\* coverage/**\* test/**\**
+
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v1
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: {APPLICATION_NAME}
+        environment_name: {APPLICATION_NAME}-staging
+        version_label: ${{ format('{APPLICATION_NAME}-{0}', steps.create_tag.outputs.new_tag) }}
+        region: us-west-2
+        deployment_package: deploy.zip
