@@ -1,5 +1,6 @@
 # FIND ALL AND REPLACE 
 {APPLICATION_NAME} -> the name of the application
+
 {REPOSITORY_NAME} -> the exact name of the repo
 
 
