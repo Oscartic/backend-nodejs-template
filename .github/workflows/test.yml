@@ -1,0 +1,29 @@
+name: Test
+on: [pull_request]
+
+jobs:
+  Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - name: Install docker with mongo
+      run:  sudo docker run --name mongo -d -p 27017:27017 mongo:4.2
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@master
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Config github packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_PACKAGES_ACCESS_TOKEN }}" >> .npmrc
+
+    - name: npm install and test
+      run: |
+        npm ci
+        npm run test

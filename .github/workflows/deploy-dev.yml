@@ -1,0 +1,48 @@
+name: Deploy Dev
+
+on:
+  push:
+    branches:
+      - 'develop'
+    paths:
+      - 'server/**'
+      - 'env/**'
+      - 'package-lock.json'
+      - '.ebextensions/**'
+      - '.elasticbeanstalk/**'
+      - '.github/**'
+
+jobs:
+
+  Deploy-dev:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Config github packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_PACKAGES_ACCESS_TOKEN }}" >> .npmrc
+
+    - name: Generate deployment package
+      run: zip deploy.zip * -r -rv .npmrc -x *.git* node_modules/**\* coverage/**\* test/**\**
+
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v1
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: {APPLICATION_NAME}
+        environment_name: {APPLICATION_NAME}-dev
+        version_label: ${{ format('{APPLICAITON_NAME}-{0}', github.sha) }}
+        region: us-west-2
+        deployment_package: deploy.zip
