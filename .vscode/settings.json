@@ -1,20 +1,7 @@
 {
   "javascript.updateImportsOnFileMove.enabled": "always",
   "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.folders.color": "#42a5f5",
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "terminal.integrated.rendererType": "canvas",
   "editor.rulers": [100],
   "editor.tabSize": 2,
-  "material-icon-theme.files.associations": {
-    "**.factory.js": "javascript-map"
-  },
-  "material-icon-theme.folders.associations": {
-    "factories": "mock",
-    "schemas": "rules",
-    ".ebextensions": "aws",
-    ".elasticbeanstalk": "aws"
-  },
-  "window.zoomLevel": 1,
   "explorer.sortOrder": "type"
 }

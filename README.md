@@ -1,16 +1,41 @@
-# FIND ALL AND REPLACE 
-{APPLICATION_NAME} -> the name of the application
-
-{REPOSITORY_NAME} -> the exact name of the repo
+# Backend Node JS Template
 
 
-# Toboso backend
+This template is the father of backend projects in Abstract.
+
+# What's inside this template?
+
+This template contains the following technologies:
+
+- [Chai](https://www.chaijs.com/) as assertion library
+- [Mocha](https://mochajs.org/) as test framework
+- [swagger-jsdoc](https://www.npmjs.com/package/swagger-jsdoc) for in-code API documentation.
+- Github actions to test, lint and deploy.
+- Mongo and mongoose as database.
+- Express as backend framework.
+
+# Usage
+
+## Installation
+
+Just clone the repository as a template. [Github documentation](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+
+
+##  Find all and replace 
+
+To properly set the name of the application and the associated github actions, you have to *find and replace* the following terms:
+
+- application-name -> the name of the application.
+
+- repository-name -> the exact name of the repo.
+
+# application-name backend
 
 ## Develop
-[![Actions Status](https://github.com/abstract-cl/{REPOSITORY_NAME}/workflows/Deploy/badge.svg)](https://github.com/abstract-cl/toboso-api)
-[![Actions Status](https://github.com/abstract-cl/{REPOSITORY_NAME}/workflows/Test/badge.svg)](https://github.com/abstract-cl/toboso-api)
-[![Actions Status](https://github.com/abstract-cl/{REPOSITORY_NAME}/workflows/Lint/badge.svg)](https://github.com/abstract-cl/toboso-api)
-[![Actions Status](https://github.com/abstract-cl/{REPOSITORY_NAME}/workflows/Audit/badge.svg)](https://github.com/abstract-cl/toboso-api)
+[![Actions Status](https://github.com/abstract-cl/repository-name/workflows/Deploy/badge.svg)](https://github.com/abstract-cl/toboso-api)
+[![Actions Status](https://github.com/abstract-cl/repository-name/workflows/Test/badge.svg)](https://github.com/abstract-cl/toboso-api)
+[![Actions Status](https://github.com/abstract-cl/repository-name/workflows/Lint/badge.svg)](https://github.com/abstract-cl/toboso-api)
+[![Actions Status](https://github.com/abstract-cl/repository-name/workflows/Audit/badge.svg)](https://github.com/abstract-cl/toboso-api)
 
 ## Installation
 
@@ -49,6 +74,7 @@ You also need to install [MongoDb 4.2 community edition](https://docs.mongodb.co
     $ npm audit --registry=https://registry.npmjs.org
   
 ## Pull Requests
+
   Pull requests will run 3 checks
     * Linter
     * Tests

@@ -5,9 +5,9 @@ const options = {
   swaggerDefinition: {
     openapi: '3.0.0',
     info: {
-      title: '{APPLICATION_NAME}',
+      title: 'application-name',
       version: '0.0.1',
-      description: 'This is a sample server for {APPLICATION_NAME} API.',
+      description: 'This is a sample server for application-name API.',
     },
   },
   apis: [
