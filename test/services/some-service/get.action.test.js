@@ -1,4 +1,4 @@
-const { expect } = require('../../../chai.commons');
+const { expect } = require('../../chai.commons');
 const SomeFactory = require('../../factories/some.factory');
 const SomeService = require('../../../server/services/some-service/');
 const Some = require('../../../server/services/some-service/models/some.model');
@@ -8,7 +8,6 @@ require('../../../server/app');
 describe('SOME-SERVICE: get', function () {
   beforeEach(async function () {
     await Some.deleteMany({});
-    return;
   });
 
   afterEach(function () {
@@ -17,7 +16,7 @@ describe('SOME-SERVICE: get', function () {
   it('[ERROR] should throw not found error when someId doesnt exist', async function () {
     const someId = 'some-id';
     try {
-      const { some } = SomeService.get({ someId });
+      await SomeService.get({ someId });
       throw new Error('shouldve thrown an error');
     } catch (error) {
       expect(error).to.exist;
