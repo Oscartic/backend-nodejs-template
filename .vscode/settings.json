@@ -1,14 +1,6 @@
 {
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.iconTheme": "material-icon-theme",
   "editor.rulers": [100],
-  "material-icon-theme.folders.color": "#42a5f5",
-  "material-icon-theme.folders.associations": {
-    "factories": "mock",
-    "schemas": "rules",
-    ".ebextensions": "aws",
-    ".elasticbeanstalk": "aws"
-  },
   "editor.tabSize": 2,
   "explorer.sortOrder": "type",
   "eslint.validate": [

@@ -11,4 +11,4 @@ module.exports = async function create({
   } catch (error) {
     throw parseError({ error, errorMessages: serviceErrors.create });
   }
-}
+};

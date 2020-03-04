@@ -65,7 +65,7 @@ router.post('/', create);
  *   put:
  *     tags:
  *       - Some
- *     summary: Updates Some by id 
+ *     summary: Updates Some by id
  *     security:
  *       - BearerAuth: []
  *     parameters:
