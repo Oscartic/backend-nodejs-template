@@ -32,6 +32,7 @@
     "mocha/no-top-level-hooks": "error",
     "chai-expect/missing-assertion": "error",
     "chai-expect/no-inner-compare": "error",
-    "chai-expect/terminating-properties": "error"
+    "chai-expect/terminating-properties": "error",
+    "linebreak-style": "off"
   }
 }
