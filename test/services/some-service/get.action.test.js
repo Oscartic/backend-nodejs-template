@@ -17,7 +17,7 @@ describe('SOME-SERVICE: get', function () {
   it('[ERROR] should throw not found error when someId doesnt exist', async function () {
     const someId = 'some-id';
     try {
-      const { some } = SomeService.get({ someId });
+      const { some } = await SomeService.get({ someId });
       throw new Error('shouldve thrown an error');
     } catch (error) {
       expect(error).to.exist;
@@ -31,7 +31,7 @@ describe('SOME-SERVICE: get', function () {
     const someId = 'some-id';
     await Some.create(SomeFactory.build({ someId }));
 
-    const { some } = SomeService.get({ someId });
+    const { some } = await SomeService.get({ someId });
     expect(some).to.exist;
     expect(some.someId).to.equal(someId);
   });

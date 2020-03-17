@@ -30,7 +30,7 @@ const router = express.Router({ mergeParams: true });
  *             schema:
  *               $ref: '#/components/schemas/SomeResource'
  */
-router.post('/', get);
+router.get('/someId', get);
 
 /**
  * @swagger
@@ -65,7 +65,7 @@ router.post('/', create);
  *   put:
  *     tags:
  *       - Some
- *     summary: Updates Some by id 
+ *     summary: Updates Some by id
  *     security:
  *       - BearerAuth: []
  *     parameters:

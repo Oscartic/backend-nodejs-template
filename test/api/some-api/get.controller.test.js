@@ -1,7 +1,6 @@
 const request = require('supertest');
 const { expect, sinon } = require('../../chai.commons');
 const app = require('../../../server/app');
-const apiErrors = require('../../../server/api/some-api/messages.errors');
 const SomeService = require('../../../server/services/some-service');
 const SomeFactory = require('../../factories/some.factory');
 
@@ -19,22 +18,6 @@ describe('SOME-API: get', function () {
   afterEach(function () {
     someServiceStub.restore();
   });
-
-  it('[ERROR] should return a bad request error when someId is missing', async function () {
-    const response = await request(api)
-      .get(`${url}/`)
-      .set('Accept', 'application/json')
-      .expect(400)
-      .expect('Content-Type', /json/);
-
-    expect(response.body).to.exist;
-    expect(response.body.error).to.exist;
-    expect(response.body.error.statusCode).to.equal(400);
-    expect(response.body.error.type).to.equal(apiErrors.get.name);
-    expect(response.body.error.message).to.equal(apiErrors.get.messages.someId);
-    expect(someServiceStub).to.have.not.been.called;
-  });
-
 
   it('[SUCCESS]', async function () {
     const fakeSome = SomeFactory.build();
