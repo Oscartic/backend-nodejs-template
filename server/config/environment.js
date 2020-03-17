@@ -45,7 +45,7 @@ module.exports = {
     key: 'API_PORT',
     defaultValue: '',
   }),
-  
+
   jwt: {
     secret: getEnvValue({
       key: 'JWT_SECRET',

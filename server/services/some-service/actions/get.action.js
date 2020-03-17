@@ -18,4 +18,4 @@ module.exports = async function get({
   } catch (error) {
     throw parseError({ error, errorMessages: serviceErrors.get });
   }
-}
+};

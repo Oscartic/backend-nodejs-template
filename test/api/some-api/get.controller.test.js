@@ -38,7 +38,7 @@ describe('SOME-API: get', function () {
 
   it('[SUCCESS]', async function () {
     const fakeSome = SomeFactory.build();
-    someServiceStub.resolves({ some })
+    someServiceStub.resolves({ some: fakeSome });
 
     const response = await request(api)
       .get(`${url}/${fakeSome.someId}`)
@@ -46,7 +46,7 @@ describe('SOME-API: get', function () {
       .expect(200)
       .expect('Content-Type', /json/);
 
-    const some = response.body
+    const some = response.body;
     expect(some).to.exist;
     expect(some.name).to.equal(fakeSome.name);
     expect(some.someId).to.equal(fakeSome.someId);

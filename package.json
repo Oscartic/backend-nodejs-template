@@ -1,12 +1,12 @@
 {
-  "name": "{APPLICATION_NAME}",
+  "name": "application-name",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/abstractdevelop/{repo-name}#readme",
+  "homepage": "https://github.com/abstract-cl/{repo-name}#readme",
   "dependencies": {
     "@hapi/joi": "^16.1.8",
     "bluebird": "^3.7.2",

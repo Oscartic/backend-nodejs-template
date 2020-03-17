@@ -5,7 +5,7 @@ const Some = require('../models/some.model');
 
 module.exports = async function get({
   someId,
-  name
+  name,
 }) {
   try {
     const some = await Some.findOneAndUpdate(
@@ -26,4 +26,4 @@ module.exports = async function get({
   } catch (error) {
     throw parseError({ error, errorMessages: serviceErrors.update });
   }
-}
+};
